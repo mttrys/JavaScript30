@@ -58,18 +58,20 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
   <script>
   $(document).keydown(function(e) {
-    const key = $(`.key[data-key="${e.keyCode}"]`).addClass("playing");
+    $(`.key[data-key="${e.keyCode}"]`)
+      .addClass("playing")
+        .one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", // cross browser support
+          function() {
+            $(this).removeClass('playing')
+          });
+
     const audio = $(`audio[data-key="${e.keyCode}"]`);
-    if (!audio[0]) {
-      return;
-    }
+    if (!audio[0]) return;
     audio[0].currentTime = 0;
-    audio[0].play()
-    key.one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
-      function(event) {
-        key.removeClass('playing')
-      });
-  })
+    audio[0].play();
+  });
+
+
   </script>
 </body>
 
