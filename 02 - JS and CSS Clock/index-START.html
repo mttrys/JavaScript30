@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>JS + CSS Clock</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -64,16 +65,19 @@
       top:50%;
       transform-origin: 100%; /* pivot point along x axis */
       transform: rotate(90deg); /* starting hand angles to 12 */
-      transition: all 0.05s;
       transition-timing-function: cubic-bezier(0.01, 0.01, 0.1, 1.76);
     }
 
   </style>
 
   <script>
-    const secondHand = document.querySelector('.second-hand')
-    const minHand = document.querySelector('.min-hand')
-    const hourHand = document.querySelector('.hour-hand')
+    // const secondHand = document.querySelector('.second-hand')
+    // const minHand = document.querySelector('.min-hand')
+    // const hourHand = document.querySelector('.hour-hand')
+
+    const secondHand = $('.second-hand')[0];
+    const minHand = $('.min-hand')[0];
+    const hourHand = $('.hour-hand')[0];
 
     function setDate() {
       const now = new Date();
@@ -98,5 +102,6 @@
 
     setInterval(setDate, 1000);
   </script>
+}
 </body>
 </html>
