@@ -1,46 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
-
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
-
   <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+  const dogs = [{
+    name: 'Snickers',
+    age: 2
+  }, {
+    name: 'hugo',
+    age: 8
+  }];
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+  function makeGreen() {
+    const p = document.querySelector('p');
+    p.style.color = '#BADA55';
+    p.style.fontSize = '50px';
+  }
 
-    // Regular
+  // Regular
+  console.log('hello i am regular');
 
-    // Interpolated
+  // Interpolated
+  console.log('hello i am %s', 'interpolated');
 
-    // Styled
+  // Styled
+  console.log('%c i am some great text', 'font-size:50px; background:red;');
+  console.clear(); // clearn the console
 
-    // warning!
+  // warning!
+  console.warn('this is some warn message in the console');
 
-    // Error :|
+  // Error :|
+  console.error('this is some error message in the console');
 
-    // Info
+  // Info
+  console.info('this is some info message in the console');
 
-    // Testing
+  // Testing
+  const p = document.querySelector('p');
+  // get the first p element in the dom
+  console.assert(p.classList.contains('ouch'), 'That is wrong!');
+  // return boolean if the classlist on the first p element in the dom contains the class name of "ouch".
 
-    // clearing
+  // clearing
+  console.clear()
 
-    // Viewing DOM Elements
+  // Viewing DOM Elements
+  console.log(p);
+  console.dir(p);
 
-    // Grouping together
+  // Grouping together
+  dogs.forEach(dog => {
+    console.groupCollapsed(`${dog.name}`);
+    console.log(`this is ${dog.name}`);
+    console.log(`${dog.name} is ${dog.age} years old`);
+    console.log(`${dog.name} is ${dog.age} * 7 dog years old`);
+    console.groupEnd(`${dog.name}`);
+  })
 
-    // counting
+  // counting
+  console.count('Wes');
+  console.count('Wes');
+  console.count('Steve');
+  console.count('Steve');
+  console.count('Wes');
+  console.count('Steve');
+  console.count('Wes');
+  console.count('Steve');
+  console.count('Steve');
+  console.count('Steve');
+  console.count('Steve');
+  console.count('Steve');
 
-    // timing
-
+  // timing
+  console.time('fetching data');
+  fetch('http://api.github.com/users/mttrys')
+    .then(data => data.json())
+    .then(data => {
+      console.timeEnd('fetching data');
+      console.log(data);
+    })
   </script>
 </body>
+
 </html>
